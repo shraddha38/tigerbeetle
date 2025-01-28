@@ -33,6 +33,7 @@ def test_init_parameters():
             client = tb.ClientSync(cluster_id=cluster_id, replica_addresses=address_comma)
 
             cluster_id_out = tb.c_uint128()
+            client_id_out = tb.c_uint128()
             addresses_ptr_out = ctypes.c_char_p()
             addresses_len_out = ctypes.c_uint64()
 
@@ -40,6 +41,9 @@ def test_init_parameters():
                 client._client,
                 ctypes.cast(
                     ctypes.byref(cluster_id_out), ctypes.POINTER(ctypes.c_uint8 * 16)
+                ),
+                ctypes.cast(
+                    ctypes.byref(client_id_out), ctypes.POINTER(ctypes.c_uint8 * 16)
                 ),
                 ctypes.byref(addresses_ptr_out),
                 ctypes.byref(addresses_len_out)

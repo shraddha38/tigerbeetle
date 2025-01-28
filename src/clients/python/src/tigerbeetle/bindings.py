@@ -641,6 +641,7 @@ tb_client_init_parameters = tbclient.tb_client_init_parameters
 tb_client_init_parameters.restype = None
 tb_client_init_parameters.argtypes = [Client,
                                       ctypes.POINTER(ctypes.c_uint8 * 16),
+                                      ctypes.POINTER(ctypes.c_uint8 * 16),
                                       ctypes.POINTER(ctypes.c_char_p),
                                       ctypes.POINTER(ctypes.c_uint64)]
 

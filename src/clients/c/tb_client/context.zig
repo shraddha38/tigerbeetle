@@ -30,6 +30,7 @@ pub const ContextImplementation = struct {
     deinit_fn: *const fn (*ContextImplementation) void,
 
     cluster_id: u128,
+    client_id: u128,
     addresses: []const u8,
 };
 
@@ -207,6 +208,7 @@ pub fn ContextType(
                 .deinit_fn = Context.on_deinit,
 
                 .cluster_id = cluster_id,
+                .client_id = context.client_id,
                 .addresses = addresses_copy,
             };
 

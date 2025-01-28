@@ -204,12 +204,14 @@ pub fn init_echo(
 pub fn init_parameters(
     client: tb_client_t,
     out_cluster_id_ptr: *[16]u8,
+    out_client_id_ptr: *[16]u8,
     out_addresses_ptr: *[*]const u8,
     out_addresses_len: *usize,
 ) callconv(.C) void {
     const context = client_to_context(client);
 
     stdx.copy_disjoint(.exact, u8, out_cluster_id_ptr, std.mem.asBytes(&context.cluster_id));
+    stdx.copy_disjoint(.exact, u8, out_client_id_ptr, std.mem.asBytes(&context.client_id));
     out_addresses_ptr.* = context.addresses.ptr;
     out_addresses_len.* = context.addresses.len;
 }
